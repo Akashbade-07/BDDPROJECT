@@ -1,0 +1,38 @@
+package pageObjects;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class CartPage {
+
+	WebDriver driver;
+
+	public CartPage(WebDriver driver) {
+		this.driver = driver;
+		PageFactory.initElements(driver, this);
+	}
+
+	@FindBy(xpath = "//button[@class='_2KpZ6l _2U9uOA _3v1-ww']") //// *[@id=\"container\"]/div/div[3]/div[1]/div[1]/div[2]/div/ul/li[1]/button")
+																	//// ////button[contains(text(),'Add to Cart')]
+	public static WebElement addToCartButton;
+
+	@FindBy(xpath = "//span[contains(text(),'Place Order')]") //// *[@id=\"container\"]/div/div[3]/div[1]/div[1]/div[2]/div/ul/li[1]/button")
+																//// ////button[contains(text(),'Add to Cart')]
+	public WebElement placeOrderbutton;
+
+	public static void addToCart() throws InterruptedException {
+
+		GenericFunction.waitForElementVisibility(addToCartButton, 10);
+		GenericFunction.clickElement(addToCartButton);
+
+	}
+
+	public void placeOrder() throws InterruptedException {
+		GenericFunction.waitForElementVisibility(placeOrderbutton, 10);
+		GenericFunction.clickElement(placeOrderbutton);
+		//placeOrderbutton.click();
+	}
+}

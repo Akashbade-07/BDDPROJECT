@@ -1,0 +1,54 @@
+package pageObjects;
+
+import java.util.List;
+
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class HomePage {
+
+	
+WebDriver driver;
+	
+	public HomePage(WebDriver driver)
+	{
+		this.driver=driver;
+		PageFactory.initElements(driver, this);
+	}
+	
+	@FindBy(xpath="//img[@title='Flipkart']")
+	private static WebElement homepagelogo;
+	
+	
+	  @FindBy(name = "q")
+	    private static WebElement searchBox;
+
+	    @FindBy(xpath = "//img[@loading='eager']")
+	    private static List<WebElement> searchResults;
+	
+	
+	 public static boolean isFlipkartLogoDisplayed() {
+	        WebElement logo = homepagelogo;
+	        return logo.isDisplayed();
+	    }
+	 
+	 public static void searchDevice(String deviceName) {
+	        searchBox.sendKeys(deviceName);
+	        searchBox.sendKeys(Keys.ENTER);
+	    }
+
+	    // Method to click on the first device in search results
+	    public static void clickOnFirstDevice() {
+	    	try {
+	        if (!searchResults.isEmpty()) {
+	            searchResults.get(0).click();
+	        }
+	    	
+	    }catch(Exception e) {
+	   
+	    }
+}
+}

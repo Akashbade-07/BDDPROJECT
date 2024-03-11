@@ -1,0 +1,56 @@
+package stepDefinations;
+
+import static org.junit.Assert.assertTrue;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import pageObjects.HomePage;
+import pageObjects.Loginpage;
+
+public class Steps {
+	public WebDriver driver;
+	public Loginpage lp;
+   public HomePage hp;
+
+	@Given("the user opens the flipkart {string} website")
+	public void the_user_opens_the_flipkart_website(String url) {
+		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"//Drivers/chromedriver.exe");
+		  driver=new ChromeDriver();
+		  lp=new Loginpage(driver);
+		  driver.get(url);
+		  driver.manage().deleteAllCookies();
+		  driver.manage().window().maximize();
+		 // driver.quit();
+	}
+
+	@When("verify homepage")
+	public void verify_homepage() {
+		hp=new HomePage(driver);
+		 assertTrue(HomePage.isFlipkartLogoDisplayed());  
+	}
+
+	@When("the user searches for a device {string} and verify device details")
+	public void the_user_searches_for_a_device_and_verify_device_details(String deviceName) {
+		
+		HomePage.searchDevice(deviceName);
+		HomePage.clickOnFirstDevice();
+		
+	}
+
+	@When("adds the device to the cart")
+	public void adds_the_device_to_the_cart() {
+	   
+	}
+
+	@When("proceeds to checkout page and verify checkout page")
+	public void proceeds_to_checkout_page_and_verify_checkout_page() {
+	    
+	}
+
+
+
+}

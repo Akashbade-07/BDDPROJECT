@@ -1,0 +1,29 @@
+package pageObjects;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class ShippingAddressPage {
+	WebDriver driver;
+	
+	public ShippingAddressPage(WebDriver driver)
+	{
+		this.driver=driver;
+		PageFactory.initElements(driver, this);
+	}
+	
+	 @FindBy(xpath="(//button[contains(text(),'Change')])[2]")
+	  public WebElement addressChangeButton;
+	 
+
+	 @FindBy(xpath="//button[contains(text(),'EDIT')]")
+	  public WebElement addressEditButton;
+	
+	 
+	
+
+	
+	
+}

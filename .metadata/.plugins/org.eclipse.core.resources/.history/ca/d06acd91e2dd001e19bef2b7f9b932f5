@@ -1,0 +1,59 @@
+package pageObjects;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class Loginpage {
+
+	WebDriver driver;
+	
+	public Loginpage(WebDriver driver)
+	{
+		this.driver=driver;
+		PageFactory.initElements(driver, this);
+	}
+	
+@FindBy(xpath="//input[@id='user-name']")
+WebElement txtusername;
+
+@FindBy(xpath="//input[@id='password']")
+WebElement txtpassword;
+
+@FindBy(xpath="//input[@id='login-button']")
+WebElement loginButton;
+
+@FindBy(xpath="//div[contains(text(),'Swag Labs')]")
+WebElement loginpagetext;
+
+@FindBy(xpath="//div[contains(text(),'Swag Labs')]")
+WebElement homepagetext;
+
+@FindBy(xpath="//button[contains(text(),'Open Menu')]")
+WebElement homepageopenMenu;
+
+@FindBy(xpath="//a[contains(text(),'Logout')]")
+WebElement logout;
+
+public void setUserName(String uname) {
+	txtusername.clear();
+	txtusername.sendKeys(uname);
+	
+}
+public void setPassword(String pwd) {
+	txtpassword.clear();
+	txtpassword.sendKeys(pwd);
+
+}
+public void clickLogin() {
+	loginButton.click();
+	
+}
+public void clickLogout() throws InterruptedException {
+	homepageopenMenu.click();
+	Thread.sleep(1000);
+	logout.click();
+	
+}
+}

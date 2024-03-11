@@ -1,0 +1,39 @@
+package pageObjects;
+
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class CartPage {
+
+	WebDriver driver;
+		
+		public CartPage(WebDriver driver)
+		{
+			this.driver=driver;
+			PageFactory.initElements(driver, this);
+		}
+		
+		 @FindBy(xpath="//button[@class='_2KpZ6l _2U9uOA _3v1-ww']")////*[@id=\"container\"]/div/div[3]/div[1]/div[1]/div[2]/div/ul/li[1]/button") ////button[contains(text(),'Add to Cart')]
+		    public static WebElement addToCartButton;
+		 
+
+		public static void addToCart() throws InterruptedException {
+			Thread.sleep(2000);
+
+			try {
+			   addToCartButton.click();
+			}catch(Exception e)
+			{
+				JavascriptExecutor executor = (JavascriptExecutor) driver;
+		        executor.executeScript("arguments[0].click();", addToCartButton);
+			}
+			
+		}
+}
+
+
+
+

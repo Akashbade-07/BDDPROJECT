@@ -1,0 +1,10 @@
+Feature: ShopNow Checkout Process
+
+  Scenario: User navigates through the checkout process without placing an order
+
+    Given the user opens the ShopNow website
+    When the user searches for a product
+    And adds the product to the cart
+    And proceeds to checkout
+    And completes the checkout process without placing the order
+    Then verify that the user has navigated through the checkout process successfully

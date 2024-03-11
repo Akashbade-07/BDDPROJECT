@@ -1,0 +1,18 @@
+package testRunner;
+
+import io.cucumber.junit.Cucumber;
+import io.cucumber.junit.CucumberOptions;
+import org.junit.runner.RunWith;
+
+
+@RunWith(Cucumber.class)
+@CucumberOptions(
+		features=  "C:/JavaTraining/flipkart/Features/shopnow.feature",//"Features/shopnow.feature",//feature file path
+		glue="stepDefinations",//stepdefination package name
+		dryRun=true,//checking every feature step has particular stepdefinatio or not
+		monochrome=true,//it will give readable format of console
+		plugin= {"pretty","html:test-output"}//its for reports- to generate good reports
+		)
+public class TestRun {
+
+}
