@@ -21,24 +21,20 @@ public class CartPage {
 		PageFactory.initElements(driver, this);
 	}
 
-	@FindBy(xpath = "//button[@class='_2KpZ6l _2U9uOA _3v1-ww']") //// *[@id=\"container\"]/div/div[3]/div[1]/div[1]/div[2]/div/ul/li[1]/button")
-																	//// ////button[contains(text(),'Add to Cart')]
+	@FindBy(xpath = "//button[@class='_2KpZ6l _2U9uOA _3v1-ww']")
+
 	public static WebElement addToCartButton;
 
-	@FindBy(xpath = "//span[contains(text(),'Place Order')]") //// *[@id=\"container\"]/div/div[3]/div[1]/div[1]/div[2]/div/ul/li[1]/button")
-																//// ////button[contains(text(),'Add to Cart')]
+	@FindBy(xpath = "//span[contains(text(),'Place Order')]")
+
 	public static WebElement placeOrderbutton;
-	
-	@FindBy(xpath = "//span[contains(text(),'Login or Signup')]") 
-public static WebElement Sighup;
-	
-	
+
+	@FindBy(xpath = "//span[contains(text(),'Login or Signup')]")
+	public static WebElement Sighup;
 
 	public static void addToCart() throws InterruptedException {
 		try {
 			GenericFunction.waitForElementVisibility(addToCartButton, 30);
-			// addToCartButton.click();
-			// GenericFunction.clickElement(addToCartButton);
 			Thread.sleep(3000);
 			WebElement element = driver.findElement(By.xpath("//button[@class='_2KpZ6l _2U9uOA _3v1-ww']"));
 			Thread.sleep(3000);
@@ -56,7 +52,6 @@ public static WebElement Sighup;
 		try {
 			GenericFunction.waitForElementVisibility(placeOrderbutton, 10);
 			placeOrderbutton.click();
-
 			// Assert that the order is successfully placed
 			assertTrue("Order is successfully placed", isOrderPlaced());
 		} catch (Exception e) {
@@ -66,7 +61,7 @@ public static WebElement Sighup;
 
 	public static boolean isProductAddedToCart() {
 		try {
-			
+
 			GenericFunction.waitForElementVisibility(placeOrderbutton, 30);
 			return placeOrderbutton.isDisplayed();
 		} catch (NoSuchElementException e) {

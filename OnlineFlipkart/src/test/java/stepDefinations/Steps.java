@@ -29,6 +29,7 @@ public class Steps {
 	public ShippingAddressPage ca;
 	private String mainWindowHandle;
 	private static final Logger LOGGER = Logger.getLogger(Steps.class.getName());
+
 	@Given("the user opens the flipkart {string} website")
 	public void the_user_opens_the_flipkart_website(String url) {
 		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "//Drivers/chromedriver.exe");
@@ -60,7 +61,7 @@ public class Steps {
 				break;
 			}
 		}
-		
+
 	}
 
 	@When("adds the device to the cart")
@@ -70,40 +71,36 @@ public class Steps {
 		Thread.sleep(3000);
 		CartPage.addToCart();
 		Thread.sleep(3000);
-		//CartPage.placeOrder();
-		
-		
-		/*
-		 * Thread.sleep(3000); WebElement element =
-		 * driver.findElement(By.xpath("//button[@class='_2KpZ6l _2U9uOA _3v1-ww']"));
-		 * Thread.sleep(3000); Actions actions = new Actions(driver);
-		 * actions.moveToElement(element).click().perform();
-		 */
-		 
-		 
+
 	}
 
 	@When("proceeds to checkout page and verify checkout page")
 	public void proceeds_to_checkout_page_and_verify_checkout_page() throws InterruptedException {
-		cp=new CartPage(driver);
-		Thread.sleep(3000);
-		ca=new ShippingAddressPage(driver);
+		cp = new CartPage(driver);
 		Thread.sleep(3000);
 		cp.placeOrder();
 		Thread.sleep(3000);
 		ca.enterAddress();
-		//Thread.sleep(13000);
+
 	}
+
 	@When("completes the checkout process without placing the order")
-	public void completes_the_checkout_process_without_placing_the_order() {
-	   
+	public void completes_the_checkout_process_without_placing_the_order() throws InterruptedException {
+		// due to unable to login in flipkart with userid and static password so unable
+		// to complete this steps
+		// ca=new ShippingAddressPage(driver);
+		// Thread.sleep(3000);
+		// ca.enterAddress();
+
 	}
 
 	@Then("verify that the user has navigated through the checkout process successfully")
-	public void verify_that_the_user_has_navigated_through_the_checkout_process_successfully() throws InterruptedException {
+	public void verify_that_the_user_has_navigated_through_the_checkout_process_successfully()
+			throws InterruptedException {
+		// due to unable to login in flipkart with userid and static password so unable
+		// to complete this steps
 		Thread.sleep(3000);
 		driver.quit();
 	}
-
 
 }
